@@ -8,43 +8,77 @@
 
     <SearchView
         android:id="@+id/searchView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="39dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="389dp"
+        android:layout_height="54dp"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="53dp" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="119dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="483dp"
+        android:layout_width="197dp"
+        android:layout_height="52dp"
         android:background="@color/white"
         android:text="Tagged Searches"
-        android:textColor="black"
+        android:textColor="#000000"
         android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        tools:layout_editor_absoluteX="107dp"
+        tools:layout_editor_absoluteY="180dp" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="95dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="27dp"
-        android:background="#D3D3D3"
+        android:layout_width="123dp"
+        android:layout_height="54dp"
+        android:backgroundTint="#808080"
         android:text="Save"
-        android:textColor="black"
+        android:textColor="#000000"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        tools:layout_editor_absoluteX="272dp"
+        tools:layout_editor_absoluteY="117dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="373dp"
+        android:layout_height="54dp"
+        android:text="Clear Tags"
+        android:textColor="@color/black"
+        android:backgroundTint="#808080"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="668dp" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="420dp"
+        android:layout_height="42dp"
+        android:background="#808080"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        tools:layout_editor_absoluteX="-6dp" />
+
+
+
+    <RelativeLayout
+        android:layout_width="384dp"
+        android:layout_height="485dp"
+        android:background="#ffae42"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="171dp">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="295dp"
+            android:layout_height="30dp"
+            android:text="Favorite Twitter Searches"
+            android:textColor="#FFFFFF"
+            tools:layout_editor_absoluteX="9dp"
+            tools:layout_editor_absoluteY="12dp" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="106dp"
+            android:layout_height="54dp"
+            android:backgroundTint="#808080"
+            android:text="Edit" />
+    </RelativeLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

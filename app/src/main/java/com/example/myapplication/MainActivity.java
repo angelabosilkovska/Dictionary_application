@@ -9,6 +9,7 @@ import android.widget.SearchView;
 public class MainActivity extends AppCompatActivity {
 
     Button btn1;
+    Button btn2;
     TextView txt;
     SearchView searchbar;
 
@@ -16,8 +17,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         btn1 = (Button) findViewById(R.id.button);
         txt = (TextView) findViewById(R.id.textView);
         searchbar = (SearchView) findViewById(R.id.searchView);
+        btn1 = (Button) findViewById(R.id.button3);
     }
 }
