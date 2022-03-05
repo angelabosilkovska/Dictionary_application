@@ -4,142 +4,254 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:layout_margin="10dp" >
 
-    <SearchView
-
-        android:id="@+id/searchView"
-        android:layout_width="408dp"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="633dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="115dp"
-        android:layout_height="63dp"
-        android:backgroundTint="#D3D3D3"
-        android:text="Save"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
-        app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
-
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="383dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="9dp"
-        android:backgroundTint="#D3D3D3"
-        android:text="Clear Tags"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+        app:layout_constraintTop_toTopOf="parent">
 
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="386dp"
-        android:layout_height="480dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="12dp"
-        android:background="#ffae42"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="49dp"
-            android:layout_marginTop="9dp"
-            android:text="Tagged Searches"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="25dp"
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="408dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="300dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="19dp"
-            android:backgroundTint="#D3D3D3"
-            android:text="Edit"
-            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <SearchView
+                android:layout_width="300dp"
+                android:layout_height="50dp" />
+
+            <Button
+                android:id="@+id/btn"
+                android:textAllCaps="false"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:backgroundTint="#D3D3D3"
+                android:text="Save"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="511dp"
+            android:background="#ffae42"
+            android:stretchColumns="0,1"
+            tools:layout_editor_absoluteX="-2dp"
+            tools:layout_editor_absoluteY="99dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginTop="9dp"
+                android:text="Tagged Searches"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/button9"
+                    android:textAllCaps="false"
+                    android:layout_width="221dp"
+                    android:layout_height="60dp"
+                    android:backgroundTint="#D3D3D3"
+                    android:textColor="@color/black"
+                    android:layout_column="0"
+                    android:layout_marginStart="10dp"
+                    android:text="AndroidFP" />
+
+                <Button
+                    android:id="@+id/button15"
+                    android:textAllCaps="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="#D3D3D3"
+                    android:layout_column="2"
+                    android:text="Edit"
+                    android:textColor="@color/black" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/button11"
+                    android:textAllCaps="false"
+                    android:layout_width="221dp"
+                    android:layout_height="60dp"
+                    android:backgroundTint="#D3D3D3"
+                    android:textColor="@color/black"
+                    android:layout_column="0"
+                    android:layout_marginStart="10dp"
+                    android:text="Deitel" />
+
+                <Button
+                    android:id="@+id/button16"
+                    android:textAllCaps="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="#D3D3D3"
+                    android:layout_column="2"
+                    android:text="Edit"
+                    android:textColor="@color/black" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow3"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+
+                <Button
+                    android:id="@+id/button13"
+                    android:textAllCaps="false"
+                    android:layout_width="221dp"
+                    android:layout_height="60dp"
+                    android:layout_column="0"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="#D3D3D3"
+                    android:text="Google"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/button14"
+                    android:textAllCaps="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_column="2"
+                    android:backgroundTint="#D3D3D3"
+                    android:text="Edit"
+                    android:textColor="@color/black" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow4"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+
+                <Button
+                    android:id="@+id/button23"
+                    android:textAllCaps="false"
+                    android:layout_width="221dp"
+                    android:layout_height="60dp"
+                    android:layout_column="0"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="#D3D3D3"
+                    android:text="iPhoneFP"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/button17"
+                    android:textAllCaps="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_column="2"
+                    android:backgroundTint="#D3D3D3"
+                    android:text="Edit"
+                    android:textColor="@color/black" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow5"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+
+                <Button
+                    android:id="@+id/button19"
+                    android:textAllCaps="false"
+                    android:layout_width="221dp"
+                    android:layout_height="60dp"
+                    android:layout_column="0"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="#D3D3D3"
+                    android:text="JavaFP"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/button20"
+                    android:textAllCaps="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_column="2"
+                    android:backgroundTint="#D3D3D3"
+                    android:text="Edit"
+                    android:textColor="@color/black" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow6"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+
+                <Button
+                    android:id="@+id/button21"
+                    android:textAllCaps="false"
+                    android:layout_width="221dp"
+                    android:layout_height="60dp"
+                    android:layout_column="0"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="#D3D3D3"
+                    android:text="JavaHFP"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/button22"
+                    android:textAllCaps="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_column="2"
+                    android:backgroundTint="#D3D3D3"
+                    android:text="Edit"
+                    android:textColor="@color/black" />
+            </TableRow>
+
+        </TableLayout>
 
         <Button
-            android:id="@+id/btn"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="300dp"
-            android:layout_marginTop="110dp"
-            android:layout_marginEnd="19dp"
+            android:id="@+id/button3"
+            android:textAllCaps="false"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginBottom="10dp"
             android:backgroundTint="#D3D3D3"
-            android:text="Edit"
-            android:textColor="@color/black" />
+            android:text="Clear Tags"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/btn1"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="300dp"
-            android:layout_marginTop="170dp"
-            android:layout_marginEnd="19dp"
-            android:backgroundTint="#D3D3D3"
-            android:text="Edit"
-            android:textColor="@color/black" />
-
-        <Button
-            android:id="@+id/btn2"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="300dp"
-            android:layout_marginTop="230dp"
-            android:layout_marginEnd="19dp"
-            android:backgroundTint="#D3D3D3"
-            android:text="Edit"
-            android:textColor="@color/black" />
-
-        <Button
-            android:id="@+id/btn3"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="300dp"
-            android:layout_marginTop="290dp"
-            android:layout_marginEnd="19dp"
-            android:backgroundTint="#D3D3D3"
-            android:text="Edit"
-            android:textColor="@color/black" />
-
-        <Button
-            android:id="@+id/btn4"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="300dp"
-            android:layout_marginTop="350dp"
-            android:layout_marginEnd="19dp"
-            android:backgroundTint="#D3D3D3"
-            android:text="Edit"
-            android:textColor="@color/black" />
-    </RelativeLayout>
-
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,15 +1,15 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Button;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     Button btn1;
-    Button btn2;
     TextView txt;
     SearchView searchbar;
 
@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn1 = (Button) findViewById(R.id.button);
         txt = (TextView) findViewById(R.id.textView);
         searchbar = (SearchView) findViewById(R.id.searchView);
         btn1 = (Button) findViewById(R.id.button3);
