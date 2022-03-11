@@ -35,9 +35,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <SearchView
-                android:layout_width="300dp"
-                android:layout_height="50dp" />
+                <EditText
+                    android:id="@+id/editTextTextPersonName"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Name" />
 
             <Button
                 android:id="@+id/btn"
@@ -105,7 +110,7 @@
                 <Button
                     android:id="@+id/button11"
                     android:textAllCaps="false"
-                    android:layout_width="221dp"
+                    android:layout_width="201dp"
                     android:layout_height="60dp"
                     android:backgroundTint="#D3D3D3"
                     android:textColor="@color/black"
