@@ -1,80 +1,88 @@
 package com.example.myapplication;
 
+import static android.icu.lang.UCharacter.toLowerCase;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.SearchView;
+import android.widget.EditText;
 import android.widget.TextView;
-
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn1;
-    TextView txt;
-    SearchView searchbar;
+    private static final String TAG = "MainActivity";
+
+
+    private Button btn;
     HashMap<String, String> map = new HashMap<String, String>();
+    String key,value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        txt = (TextView) findViewById(R.id.textView);
-
-        btn1 = (Button) findViewById(R.id.button3);
-
-
-
-        SearchView simpleSearchView = (SearchView) findViewById(R.id.searchView); // inititate a search view
-        CharSequence query = simpleSearchView.getQuery(); // get the query string currently in the text field
-        simpleSearchView.setQueryHint("Enter word");
-
-
-
         readFromFile();
+
+        btn = (Button) findViewById(R.id.search);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("onclick se povika");
+                search();
+            }
+        });
+
 
     }
     public void readFromFile(){
+            try {
 
+                InputStream inputStream = getAssets().open("recnik.txt");
 
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(
-                    new InputStreamReader(getAssets().open("recnik.txt")));
-
-            // do reading, usually loop until end of file reading
-            String mLine;
-            while ((mLine = reader.readLine()) != null) {
-                //process line
-                String[] parts = mLine.split(":", 2);
-                if (parts.length >= 2)
-                {
-                    String key = parts[0];
-                    String value = parts[1];
+                Scanner sc = new Scanner(inputStream);
+                System.out.println("Scanner"+sc);
+                while (sc.hasNext()) {
+                    key = toLowerCase(sc.next());
+                    value = sc.nextLine();
                     map.put(key, value);
-                } else {
-                    System.out.println("ignoring line: " + mLine);
+                    System.out.println("Scanner map"+map);
                 }
+                System.out.println("readFromFile"+map);
+            } catch (IOException e) {
+                System.out.println("error pri citanje"+e);
             }
-           for (String key : map.keySet())
-           {
-               System.out.println(key + "  " + map.get(key));
-            }
-        } catch (IOException e) {
-            //log the exception
-        } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    //log the exception
-                }
-            }
+
+    }
+
+
+    private void search() {
+        InputMethodManager inputManager = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow((null == getCurrentFocus()) ? null : getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        System.out.println("inputManager"+inputManager);
+        EditText search = findViewById(R.id.edittext);
+        String key1 = search.getText().toString().trim();
+        Log.d(TAG, "search: ");
+        key1 = toLowerCase(key1);
+        String value1 = map.get(key1);
+        TextView translation= findViewById(R.id.translation);
+        System.out.println("value1"+value1);
+
+        if (value1 == null){
+            translation.setText("SORRY, WORD NOT FOUND");
+        } else {
+            translation.setText(value1.toString());
         }
     }
+
 }
