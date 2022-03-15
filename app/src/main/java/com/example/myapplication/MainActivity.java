@@ -5,8 +5,8 @@ import static android.icu.lang.UCharacter.toLowerCase;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -19,10 +19,9 @@ import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
-
-
     private Button btn;
+    private Button btn2;
+
     HashMap<String, String> map = new HashMap<String, String>();
     String key,value;
 
@@ -39,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 System.out.println("onclick se povika");
                 search();
+            }
+        });
+
+        btn2 = (Button) findViewById(R.id.OpenNewActivity);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MainActivity2.class));
             }
         });
 
@@ -61,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e) {
                 System.out.println("error pri citanje"+e);
             }
-
     }
 
 
@@ -72,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("inputManager"+inputManager);
         EditText search = findViewById(R.id.edittext);
         String key1 = search.getText().toString().trim();
-        Log.d(TAG, "search: ");
         key1 = toLowerCase(key1);
         String value1 = map.get(key1);
         TextView translation= findViewById(R.id.translation);
