@@ -12,15 +12,19 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button btn;
-    private Button btn2;
+    private Button btnNew;
+    private Button btnDelete;
 
     HashMap<String, String> map = new HashMap<String, String>();
     String key,value;
@@ -41,20 +45,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btn2 = (Button) findViewById(R.id.OpenNewActivity);
-        btn2.setOnClickListener(new View.OnClickListener() {
+        btnNew = (Button) findViewById(R.id.OpenNewActivity);
+        btnNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, MainActivity2.class));
             }
         });
 
+        btnDelete = (Button) findViewById(R.id.OpenNewActivity2);
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, MainActivity3.class));
+            }
+        });
 
     }
     public void readFromFile(){
+
             try {
 
-                InputStream inputStream = getAssets().open("recnik.txt");
+                InputStream inputStream = openFileInput("Dictionary.txt");
 
                 Scanner sc = new Scanner(inputStream);
                 System.out.println("Scanner"+sc);

@@ -1,5 +1,0 @@
-zdravo  hello
-telefon phone
-bluza   shirt
-vrata   door
-stol    chair

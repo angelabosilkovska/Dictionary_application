@@ -3,17 +3,14 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 
 public class MainActivity2 extends AppCompatActivity {
@@ -39,13 +36,13 @@ public class MainActivity2 extends AppCompatActivity {
                 writeToFile(getApplicationContext());
             }
         });
+
     }
 
 
     private void writeToFile(Context context){
 
 //TODO check for duplicates
-//TODO to read from this and not for the asset file
 
         System.out.println("getFilesDir()"+getFilesDir().getAbsolutePath() );
         String textToWrite = text1.getText().toString() +" " + text2.getText().toString() + "\n";
