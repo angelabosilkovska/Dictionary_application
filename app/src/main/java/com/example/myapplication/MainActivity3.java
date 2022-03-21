@@ -1,7 +1,10 @@
 package com.example.myapplication;
 
+import static android.icu.lang.UCharacter.toLowerCase;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +19,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class MainActivity3 extends AppCompatActivity {
 
@@ -38,54 +44,68 @@ public class MainActivity3 extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                deleteFromFile(1, " ");
+                deleteFromFile();
             }
         });
     }
 
 
-    private void deleteFromFile(int positionOfTerm, String delimiter) {
-
+    private void deleteFromFile() {
+        Context context = getApplicationContext();
         String wordToDelete = input.getText().toString();
         System.out.println("input "+input);
-        String tempFile = "temp.txt";
-
-        int position = positionOfTerm - 1;
-        String currentLine;
-        String data[];
+        HashMap<String, String> map = new HashMap<String, String>();
+        String key,value;
 
         try {
+
             InputStream inputStream = openFileInput("Dictionary.txt");
-            System.out.println("inputStream "+inputStream);
-            File oldFile = new File(String.valueOf(inputStream));
-            File newFile = new File(tempFile);
-            FileWriter fw=new FileWriter(tempFile, true);
-            BufferedWriter bw=new BufferedWriter(fw);
-            PrintWriter pw=new PrintWriter(bw);
 
-            FileReader fr=new FileReader(String.valueOf(inputStream));
-            BufferedReader br=new BufferedReader(fr);
+            Scanner sc = new Scanner(inputStream);
+            System.out.println("Scanner"+sc);
+            while (sc.hasNext()) {
+                key = toLowerCase(sc.next());
+                value = sc.nextLine();
+                map.put(key, value);
+                System.out.println("Scanner map"+map);
+            }
+            map.remove(wordToDelete);
+            System.out.println("MAP"+map);
+        } catch (IOException e) {
+            System.out.println("error pri citanje"+e);
+        }
 
-            while((currentLine = br.readLine()) != null)
-            {
-                data = currentLine.split(" ");
-                if(!(data[position].equalsIgnoreCase(wordToDelete))){
-                    pw.println(currentLine);
-                }
+        BufferedWriter bf = null;
+
+        try {
+            System.out.println("ovde stigna");
+            File file = new File(context.getFilesDir(), "Dictionary.txt");
+
+            bf= new BufferedWriter(new FileWriter(file));
+
+            for (Map.Entry<String, String> entry :
+                    map.entrySet()) {
+                System.out.println("ovde");
+                bf.write(entry.getKey() + " "
+                        + entry.getValue());
+
+                bf.newLine();
             }
 
-            pw.flush();
-            pw.close();
-            fr.close();
-            br.close();
-            bw.close();
-            fw.close();
-
-            oldFile.delete();
-            File dump = new File(String.valueOf(inputStream));
-            newFile.renameTo(dump);
-
-        } catch (IOException e) {
+            bf.flush();
         }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+
+            try {
+
+                bf.close();
+            }
+            catch (Exception e) {
+            }
+        }
+
     }
 }
